@@ -2,12 +2,16 @@
  * Squelette de classe labyrinthe
  */
 public class Labyrinthe {
-    boolean [][] mur;
-    Personnage personnage;
-    Sortie sortie;
+    private  static char constante;
+    private boolean [][] murs;
+    private Personnage personnage;
+    private Sortie sortie;
 
     char getChar(int x, int y) {
-        throw new Error("TODO");
+        char res;
+        res = murs[x][y];
+        // On return le char
+        return(res);
     }
 
 
