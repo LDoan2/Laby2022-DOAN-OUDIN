@@ -1,2 +1,6 @@
 # Laby2022-DOAN-OUDIN
-Projt labyrinthe
+Projet labyrinthe
+
+Binome : 
+DOAN Lancelot
+OUDIN Clement
