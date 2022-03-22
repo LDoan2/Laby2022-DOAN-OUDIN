@@ -9,10 +9,10 @@ public class Labyrinthe {
     private Sortie sortie;
 
     // Constante decrivant les emplacements du labyrinthe
-    private static char X;
-    private static char P;
-    private static char S;
-    private static char .;
+    private static char MUR = 'X';
+    private static char PJ = 'P';
+    private static char SORTIE ='S';
+    private static char VIDE = '.';
 
     // Constante decrivant les mouvements du perso
     private static String HAUT = "haut";
