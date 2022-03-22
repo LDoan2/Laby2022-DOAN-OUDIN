@@ -2,6 +2,9 @@
  * Squelette de classe labyrinthe
  */
 public class Labyrinthe {
+    boolean [][] mur;
+    Personnage personnage;
+    Sortie sortie;
 
     char getChar(int x, int y) {
         throw new Error("TODO");
