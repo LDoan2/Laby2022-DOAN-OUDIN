@@ -2,16 +2,34 @@
  * Squelette de classe labyrinthe
  */
 public class Labyrinthe {
-    private  static char constante;
+
+    // Attributs décrivant le layrinthe
     private boolean [][] murs;
     private Personnage personnage;
     private Sortie sortie;
 
+    // Constante decrivant les emplacements du labyrinthe
+    private static char X;
+    private static char P;
+    private static char S;
+    private static char .;
+
+    // Constante decrivant les mouvements du perso
+    private static String HAUT = "haut";
+    private static String BAS = "bas";
+    private static String GAUCHE = "gauche"
+    private static String DROITE = "droite";
+
+
+    
+
     char getChar(int x, int y) {
         char res;
-        res = murs[x][y];
-        // On return le char
-        return(res);
+        if (this.constante == "X"){
+            res = "MUR";
+        } else {
+
+        }
     }
 
 
