@@ -105,6 +105,16 @@ public class Labyrinthe {
     public String toString() {
         // On cree une var de res
         String res ="";
+        //On fait une boucle qui va balayer toute les lignes du tableau
+        for (int i = 0; i<this.murs.length;i++) {
+            //On fait une boucle qui va balayer toutes les colones du tableau
+            for (int j = 0; j < this.murs[i].length; j++) {
+                //On ajoute au res les caractères du tableau
+                res += this.getChar(i, j);
+            }
+            //On fait un saut de lignes pour changer de lignes
+            res+="\n";
+        }
         
 
         throw new Error("TODO");
