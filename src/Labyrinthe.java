@@ -69,41 +69,30 @@ public class Labyrinthe {
     void deplacerPerso(String action) throws ActionInconnueException {
         // On recupere la case suivante
         int[] tab = this.getSuivant(this.personnage.getX(), this.personnage.getY(), action);
-
-        // On test lorsque le personnage va a droite
-        if (action == this.DROITE){
-            // On déplace le perso jusqu a rencontrer un mur
-            while (this.getChar(tab[0], tab[1]) != this.MUR ){
+        // On réalise l action jusqu a ce que l on croise un mur
+        while (this.getChar(tab[0], tab[1]) != this.MUR ){
+            if (action == this.DROITE){
                 // On avance le perso sur l axe des Y
                 this.personnage.avancerY();
                 // On incremente Y jusqu'a tomber sur le mur
                 tab[1] += 1;
             }
-        }
 
-        if (action == this.GAUCHE){
-            // On déplace le perso jusqu a rencontrer un mur
-            while (this.getChar(tab[0], tab[1]) != this.MUR ){
+            if (action == this.GAUCHE){
                 // On recule le perso sur l axe des Y
                 this.personnage.reculerY();
                 // On incremente Y jusqu'a tomber sur le mur
                 tab[1] = tab[1] - 1;
             }
-        }
 
-        if (action == this.HAUT){
-            // On déplace le perso jusqu a rencontrer un mur
-            while (this.getChar(tab[0], tab[1]) != this.MUR ){
+            if (action == this.HAUT){
                 // On avance le perso sur l axe des X
                 this.personnage.avancerX();
                 // On incremente X jusqu'a tomber sur le mur
                 tab[0] = tab[0] + 1;
             }
-        }
 
-        if (action == this.BAS){
-            // On déplace le perso jusqu a rencontrer un mur
-            while (this.getChar(tab[0], tab[1]) != this.MUR ){
+            if (action == this.BAS){
                 // On recule le perso sur l axe des X
                 this.personnage.reculerX();
                 // On décrémente X jusqu'a tomber sur le mur
