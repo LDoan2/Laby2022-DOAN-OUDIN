@@ -51,13 +51,13 @@ public class Labyrinthe {
 
     static int[] getSuivant(int x, int y, String action) {
         int [] tab =new int[2];
-        if (action == "HAUT") {
+        if (action == HAUT) {
             y += 1;
-        } else if (action == "BAS") {
+        } else if (action == BAS) {
             y -= 1;
-        } else if (action == "DROITE") {
+        } else if (action == DROITE) {
             x += 1;
-        } else if (action == "GAUCHE") {
+        } else if (action == GAUCHE) {
             x -= 1;
         }
         tab[0] = x;
