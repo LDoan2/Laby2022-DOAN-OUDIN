@@ -120,7 +120,13 @@ public class Labyrinthe {
 
 
     public boolean etreFini() {
-        throw new Error("TODO");
+        //On initialise le bouleen sur false pour le modifier en cas de fin du jeu
+        boolean arret = false;
+        //On verifi si le personnage est sur la sortie
+        if(this.sortie.getX() == this.personnage.getX() && this.sortie.getY() == this.personnage.getY()){
+            arret = true;
+        }
+        return arret;
     }
 
     public static Labyrinthe chargerLabyrinthe(String nom) {
