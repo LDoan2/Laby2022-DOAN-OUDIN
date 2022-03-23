@@ -1,3 +1,5 @@
+import java.io.*;
+
 /**
  * Squelette de classe labyrinthe
  */
@@ -24,12 +26,27 @@ public class Labyrinthe {
     
 
     char getChar(int x, int y) {
+        // On cree un var permettant de stocker le res
         char res;
-        if (this.constante == "X"){
-            res = "MUR";
+        // On verifie si la case selectionnee n est pas un mur
+        if (this.murs[x][y] == false ){
+            // On regarde si la case correspond a celle de la sortie
+            if (this.sortie.getX() == x && this.sortie.getY() == y){
+                res = this.SORTIE;
+            } else {
+                // On regarde si la case correspond a celle du perso
+                if (this.personnage.getX() == x && this.personnage.getY() == y){
+                    res = this.PJ;
+                } else {
+                    res = this.VIDE;
+                }
+            }
         } else {
-
+            res = this.MUR;
         }
+
+        // On return le char correspondant
+        return(res);
     }
 
 
@@ -65,6 +82,10 @@ public class Labyrinthe {
     }
 
     public static Labyrinthe chargerLabyrinthe(String nom) {
+        /** On lit le fichier qui va contenir la map et la charger
+        FileReader read = new FileReader(nom);
+         *//
         throw new Error("TODO");
+
     }
 }
