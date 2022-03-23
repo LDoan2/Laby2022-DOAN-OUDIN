@@ -115,9 +115,7 @@ public class Labyrinthe {
             //On fait un saut de lignes pour changer de lignes
             res+="\n";
         }
-        
-
-        throw new Error("TODO");
+        return res;
     }
 
 
