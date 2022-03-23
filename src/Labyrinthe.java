@@ -175,6 +175,7 @@ public class Labyrinthe {
                     l.setPersonnage(x,y);
                 }
             }
+            temp = (char) read.read();
         }
         read.close();
         return l;
