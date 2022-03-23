@@ -18,7 +18,7 @@ public class Labyrinthe {
     // Constante decrivant les mouvements du perso
     private static String HAUT = "haut";
     private static String BAS = "bas";
-    private static String GAUCHE = "gauche"
+    private static String GAUCHE = "gauche";
     private static String DROITE = "droite";
 
 
@@ -114,7 +114,8 @@ public class Labyrinthe {
 
 
     public String toString() {
-        throw new Error("TODO");
+        // On cree une var de res
+        String res;
     }
 
 
@@ -125,7 +126,7 @@ public class Labyrinthe {
     public static Labyrinthe chargerLabyrinthe(String nom) {
         /** On lit le fichier qui va contenir la map et la charger
         FileReader read = new FileReader(nom);
-         *//
+         */
         throw new Error("TODO");
 
     }
