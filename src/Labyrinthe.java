@@ -161,7 +161,7 @@ public class Labyrinthe {
 
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit le fichier qui va contenir la map et la charger
-        FileReader read = new FileReader("../labyrinthes/laby/"+nom);
+        FileReader read = new FileReader(nom);
         int x,y;
         char temp = ' ';
         Labyrinthe l = new Labyrinthe();
