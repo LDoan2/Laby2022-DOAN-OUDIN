@@ -147,6 +147,7 @@ public class Labyrinthe {
         }
     }
 
+    // TODO : revoir fonctionnalite de methode par rapport a chargerLabyrinthe
     public void ajoutMurs(int x, int y){
         this.murs[x][y] = true;
     }
@@ -159,6 +160,7 @@ public class Labyrinthe {
         this.personnage = new Personnage(x,y);
     }
 
+    // TODO : revoir la methode, ne marche pas dans les tests -> ArrayIndexOutOfBoundException
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit le fichier qui va contenir la map et la charger
         FileReader read = new FileReader(nom);
@@ -186,4 +188,6 @@ public class Labyrinthe {
         read.close();
         return l;
     }
+
+    // TODO : Penser a faire les tests
 }
