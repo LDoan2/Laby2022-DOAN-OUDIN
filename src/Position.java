@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 public class Position {
 
     private int x,y;
@@ -29,4 +31,5 @@ public class Position {
     public void reculerY(){
         this.y = this.y - 1;
     }
+    
 }

@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Squelette de classe labyrinthe
@@ -51,13 +54,13 @@ public class Labyrinthe {
 
     static int[] getSuivant(int x, int y, String action) {
         int [] tab =new int[2];
-        if (action == "HAUT") {
+        if (action == HAUT) {
             y += 1;
-        } else if (action == "BAS") {
+        } else if (action == BAS) {
             y -= 1;
-        } else if (action == "DROITE") {
+        } else if (action == DROITE) {
             x += 1;
-        } else if (action == "GAUCHE") {
+        } else if (action == GAUCHE) {
             x -= 1;
         }
         tab[0] = x;
@@ -106,20 +109,77 @@ public class Labyrinthe {
         // On cree une var de res
         String res ="";
 
+        //On fait une boucle qui va balayer toute les lignes du tableau
+        for (int i = 0; i<this.murs.length;i++) {
+            //On fait une boucle qui va balayer toutes les colones du tableau
+            for (int j = 0; j < this.murs[i].length; j++) {
+                //On ajoute au res les caractères du tableau
+                res += this.getChar(i, j);
+            }
+            //On fait un saut de lignes pour changer de lignes
+            res+="\n";
+        }
+        return res;
 
-        throw new Error("TODO");
     }
 
 
     public boolean etreFini() {
-        throw new Error("TODO");
+        //On initialise le bouleen sur false pour le modifier en cas de fin du jeu
+        boolean arret = false;
+        //On verifi si le personnage est sur la sortie
+        if(this.sortie.getX() == this.personnage.getX() && this.sortie.getY() == this.personnage.getY()){
+            arret = true;
+        }
+        return arret;
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) {
-        /** On lit le fichier qui va contenir la map et la charger
-        FileReader read = new FileReader(nom);
-         */
-        throw new Error("TODO");
+    public void setMurs(int x,int y){
+        this.murs = new boolean [x][y];
+        for(int i = 0; i<this.murs.length;i++){
+            for(int j = 0; j<this.murs[i].length; j++){
+                this.murs[i][j] = false;
+            }
+        }
+    }
 
+    public void ajoutMurs(int x, int y){
+        this.murs[x][y] = true;
+    }
+
+    public void setSortie(int x,int y){
+        this.sortie = new Sortie(x,y);
+    }
+
+    public void setPersonnage(int x, int y){
+        this.personnage = new Personnage(x,y);
+    }
+
+    public static Labyrinthe chargerLabyrinthe(String nom) throws IOException {
+        // On lit le fichier qui va contenir la map et la charger
+        FileReader read = new FileReader("../labyrinthes/laby/"+nom);
+        int x,y;
+        char temp = ' ';
+        Labyrinthe l = new Labyrinthe();
+        x = read.read();
+        y = read.read();
+        l.setMurs(x,y);
+        for(int i = 0;i<x;i++) {
+            for(int j = 0; j<y;j++){
+                temp = (char) read.read();
+                if(temp == MUR){
+                    l.ajoutMurs(x,y);
+                }
+                else if (temp == SORTIE){
+                    l.setSortie(x,y);
+                }
+                else if(temp == PJ){
+                    l.setPersonnage(x,y);
+                }
+            }
+            temp = (char) read.read();
+        }
+        read.close();
+        return l;
     }
 }
