@@ -13,16 +13,20 @@ public class Labyrinthe {
     private Sortie sortie;
 
     // Constante decrivant les emplacements du labyrinthe
-    private static char MUR = 'X';
-    private static char PJ = 'P';
-    private static char SORTIE ='S';
-    private static char VIDE = '.';
+    // Les constantes ont etes passees en public pour permettre leur acces aux tests
+    // Les constante sont de type final pour empecher leur changement
+    final static char MUR = 'X';
+    final static char PJ = 'P';
+    final static char SORTIE ='S';
+    final static char VIDE = '.';
 
     // Constante decrivant les mouvements du perso
-    private static String HAUT = "haut";
-    private static String BAS = "bas";
-    private static String GAUCHE = "gauche";
-    private static String DROITE = "droite";
+    // Les constantes ont etes passees en public pour permettre leur acces aux tests
+    // Les constante sont de type final pour empecher leur changement
+    final static String HAUT = "haut";
+    final static String BAS = "bas";
+    final static String GAUCHE = "gauche";
+    final static String DROITE = "droite";
 
 
     
@@ -155,7 +159,7 @@ public class Labyrinthe {
         this.personnage = new Personnage(x,y);
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) throws IOException {
+    public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit le fichier qui va contenir la map et la charger
         FileReader read = new FileReader("../labyrinthes/laby/"+nom);
         int x,y;
