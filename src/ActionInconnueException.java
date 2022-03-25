@@ -1,7 +1,7 @@
 public class ActionInconnueException extends Exception {
 
-    public String ActionInconnueException(){
-        throw new Error("TODO");
+    public ActionInconnueException(){
+        super("Cette n'existe pas");
     }
 
 }

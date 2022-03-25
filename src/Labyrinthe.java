@@ -105,7 +105,7 @@ public class Labyrinthe {
     public String toString() {
         // On cree une var de res
         String res ="";
-        
+
 
         throw new Error("TODO");
     }
