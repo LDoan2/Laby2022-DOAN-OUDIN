@@ -138,12 +138,7 @@ public class Labyrinthe {
     }
 
     public void setMurs(int x,int y){
-        this.murs = new boolean [x][y];
-        for(int i = 0; i<this.murs.length;i++){
-            for(int j = 0; j<this.murs[i].length; j++){
-                this.murs[i][j] = false;
-            }
-        }
+        this.murs = new boolean[x][y];
     }
 
     // TODO : revoir fonctionnalite de methode par rapport a chargerLabyrinthe
@@ -173,6 +168,9 @@ public class Labyrinthe {
         // On initialise le labyrinthe qui sera retourne
         Labyrinthe l = new Labyrinthe();
 
+        // On connait le nombre de lignes et colonnes, on peut creer le tableau de murs
+        l.setMurs(nbLignes, nbColonnes);
+
         // On parcourt le labyrinthe
         // On parcourt l'ensemble des lignes
         for (int i = 0; i < nbLignes; i++){
@@ -182,6 +180,9 @@ public class Labyrinthe {
             }
         }
 
+
+        // On return le lab
+        return(l);
     }
 
     // TODO : Penser a faire les tests
