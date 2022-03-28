@@ -1,6 +1,5 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 
 /**
  * Squelette de classe labyrinthe
@@ -162,31 +161,27 @@ public class Labyrinthe {
 
     // TODO : revoir la methode, ne marche pas dans les tests -> ArrayIndexOutOfBoundException
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
-        // On lit le fichier qui va contenir la map et la charger
-        FileReader read = new FileReader(nom);
-        int x,y;
-        char temp = ' ';
+        // On lit les characteres du fichier
+        Reader reader = new FileReader(nom);
+        // On lit les lignes du fichier
+        BufferedReader bReader = new BufferedReader(reader);
+
+        // On regarde les premieres lignes
+        int nbLignes = Integer.parseInt(bReader.readLine());
+        // On lit la ligne suivante
+        int nbColonnes = Integer.parseInt(bReader.readLine());
+        // On initialise le labyrinthe qui sera retourne
         Labyrinthe l = new Labyrinthe();
-        x = read.read();
-        y = read.read();
-        l.setMurs(x,y);
-        for(int i = 0;i<x;i++) {
-            for(int j = 0; j<y;j++){
-                temp = (char) read.read();
-                if(temp == MUR){
-                    l.ajoutMurs(x,y);
-                }
-                else if (temp == SORTIE){
-                    l.setSortie(x,y);
-                }
-                else if(temp == PJ){
-                    l.setPersonnage(x,y);
-                }
+
+        // On parcourt le labyrinthe
+        // On parcourt l'ensemble des lignes
+        for (int i = 0; i < nbLignes; i++){
+            // On parcourt les characteres que composent la ligne
+            for (int j = 0; j < nbColonnes; j++){
+
             }
-            temp = (char) read.read();
         }
-        read.close();
-        return l;
+
     }
 
     // TODO : Penser a faire les tests
