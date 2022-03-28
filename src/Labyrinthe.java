@@ -29,6 +29,7 @@ public class Labyrinthe {
 
 
     // TODO : le getChar est pété
+
     char getChar(int x, int y) {
         // On cree un var permettant de stocker le res
         char res;
@@ -158,7 +159,7 @@ public class Labyrinthe {
         this.personnage = new Personnage(x,y);
     }
 
-    // TODO : revoir la methode, ne marche pas dans les tests
+    // TODO : Chargement de la map a l air de marcher, le getChar pose probleme ou le chargement en lui meme
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit les characteres du fichier
         Reader reader = new FileReader(nom);
