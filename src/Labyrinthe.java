@@ -139,12 +139,6 @@ public class Labyrinthe {
 
     public void setMurs(int x,int y){
         this.murs = new boolean[x][y];
-        // On initialise toute les cases a false
-        for (int i = 0; i < x;i++){
-            for (int j = 0; j<y ; j++){
-                this.murs[i][j] = false;
-            }
-        }
     }
 
     public void ajoutMurs(int x, int y){
@@ -182,11 +176,21 @@ public class Labyrinthe {
             // On change de ligne a chaque iteration
             bReader.readLine();
             // On parcourt les characteres que composent la ligne
+
             for (int j = 0; j < nbColonnes; j++){
                 if (bReader.read() == MUR){
                     l.ajoutMurs(i, j);
                 }
+                if (bReader.read() == SORTIE){
+                    l.setSortie(i, j);
+                }
+                if (bReader.read() == PJ){
+                    l.setPersonnage(i, j);
+                }
+
+
             }
+
         }
 
 
