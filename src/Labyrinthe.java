@@ -36,7 +36,7 @@ public class Labyrinthe {
         // On verifie si la case selectionnee n est pas un mur
         if (this.murs[x][y] == false ){
             // On regarde si la case correspond a celle de la sortie
-            if (this.sortie.getX() == x && this.sortie.getY() == y){
+            if ((this.sortie.getX() == x) && (this.sortie.getY() == y)){
                 res = this.SORTIE;
             } else {
                 // On regarde si la case correspond a celle du perso
@@ -153,6 +153,10 @@ public class Labyrinthe {
         this.personnage = new Personnage(x,y);
     }
 
+    public void setVide(int x, int y){
+        this.murs[x][y] = false;
+    }
+
     // TODO : Chargement de la map a l air de marcher, le getChar pose probleme ou le chargement en lui meme
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit les characteres du fichier
@@ -172,27 +176,28 @@ public class Labyrinthe {
 
         // On parcourt le labyrinthe
         // On parcourt l'ensemble des lignes
+
         for (int i = 0; i < nbLignes; i++){
             // On change de ligne a chaque iteration
             bReader.readLine();
             // On parcourt les characteres que composent la ligne
-
             for (int j = 0; j < nbColonnes; j++){
-                if (bReader.read() == MUR){
+                char temp = (char)bReader.read();
+                if (temp == MUR){
                     l.ajoutMurs(i, j);
                 }
-                if (bReader.read() == SORTIE){
+                if (temp == SORTIE){
                     l.setSortie(i, j);
                 }
-                if (bReader.read() == PJ){
+                if (temp == PJ){
                     l.setPersonnage(i, j);
                 }
-
 
             }
 
         }
-
+        // On ferme le bufferedReader
+        bReader.close();
 
         // On return le lab
         return(l);
