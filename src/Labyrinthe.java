@@ -179,7 +179,6 @@ public class Labyrinthe {
 
         for (int i = 0; i < nbLignes; i++){
             // On change de ligne a chaque iteration
-            bReader.readLine();
             // On parcourt les characteres que composent la ligne
             for (int j = 0; j < nbColonnes; j++){
                 char temp = (char)bReader.read();
@@ -194,6 +193,8 @@ public class Labyrinthe {
                 }
 
             }
+
+            bReader.readLine();
 
         }
         // On ferme le bufferedReader
