@@ -106,7 +106,7 @@ public class Labyrinthe {
         }
     }
 
-    // TODO ; a eventuellement modifier dans le cas ou il s affiche mal dans le main
+    // TODO : a eventuellement modifier dans le cas ou il s affiche mal dans le main
     public String toString() {
         // On cree une var de res
         String res ="";
@@ -157,6 +157,7 @@ public class Labyrinthe {
     }
 
 
+    // TODO : penser a gerer les exceptions
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         // On lit les characteres du fichier
         Reader reader = new FileReader(nom);
