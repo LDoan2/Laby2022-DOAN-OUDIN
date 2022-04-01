@@ -202,11 +202,36 @@ public class Labyrinthe {
         // On ferme le bufferedReader
         bReader.close();
 
+
+
+        // TODO : Faire while pour parcourir les fichiers et faire exceptions
+        // Exceptions
+        BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
+        // On passe les lignes inutiles
+        bReader2.readLine();
+        bReader2.readLine();
+        // Les colonnes que l'on va compter
+        int nbC =0;
+        boolean trouve = false;
+        char temp = (char) bReader2.read();
+
+        while (trouve ==false){
+            nbC += 1;
+            temp = (char) bReader2.read();
+            if (temp == '\n'){
+                trouve = true;
+            }
+        }
+
         if (i != nbLignes){
             throw new FichierIncorrectException("nbLignes ne correspond pas");
         }
 
-        // TODO : Faire while pour parcourir les fichiers et faire exceptions
+        if (nbC != nbColonnes){
+            throw new FichierIncorrectException("nbColonnes ne correspond pas");
+        }
+
+
 
 
         // On return le lab
