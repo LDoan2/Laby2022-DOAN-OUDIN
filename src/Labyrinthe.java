@@ -158,7 +158,7 @@ public class Labyrinthe {
 
 
     // TODO : penser a gerer les exceptions
-    public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
+    public static Labyrinthe chargerLabyrinthe(String nom) throws IOException, FichierIncorrectException {
         // On lit les characteres du fichier
         Reader reader = new FileReader(nom);
         // On lit les lignes du fichier
@@ -177,10 +177,13 @@ public class Labyrinthe {
         // On parcourt le labyrinthe
         // On parcourt l'ensemble des lignes
 
-        for (int i = 0; i < nbLignes; i++){
+        int i;
+        int j;
+
+        for (i = 0; i < nbLignes; i++){
             // On change de ligne a chaque iteration
             // On parcourt les characteres que composent la ligne
-            for (int j = 0; j < nbColonnes; j++){
+            for (j = 0; j < nbColonnes; j++){
                 char temp = (char)bReader.read();
                 if (temp == MUR){
                     l.ajoutMurs(i, j);
@@ -193,12 +196,18 @@ public class Labyrinthe {
                 }
 
             }
-
+            // On lit la prochaine ligne
             bReader.readLine();
-
         }
         // On ferme le bufferedReader
         bReader.close();
+
+        if (i != nbLignes){
+            throw new FichierIncorrectException("nbLignes ne correspond pas");
+        }
+
+        // TODO : Faire while pour parcourir les fichiers et faire exceptions
+
 
         // On return le lab
         return(l);
