@@ -1,7 +1,7 @@
 public class ActionInconnueException extends Exception {
 
-    public ActionInconnueException(){
-        super("Cette n'existe pas");
+    public ActionInconnueException(String mes){
+        super(mes);
     }
 
 }
