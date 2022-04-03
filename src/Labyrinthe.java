@@ -194,6 +194,9 @@ public class Labyrinthe {
                 if (temp == PJ){
                     l.setPersonnage(i, j);
                 }
+                if (temp != VIDE && temp!= MUR && temp != SORTIE && temp != PJ){
+                    throw new FichierIncorrectException("caractere inconnu " + temp);
+                }
 
             }
             // On lit la prochaine ligne
