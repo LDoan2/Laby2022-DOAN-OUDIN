@@ -159,86 +159,88 @@ public class Labyrinthe {
 
     // TODO : penser a gerer les exceptions
     public static Labyrinthe chargerLabyrinthe(String nom) throws IOException, FichierIncorrectException {
-        // On lit les characteres du fichier
-        Reader reader = new FileReader(nom);
-        // On lit les lignes du fichier
-        BufferedReader bReader = new BufferedReader(reader);
+        try {
+            // On lit les characteres du fichier
+            Reader reader = new FileReader(nom);
+            // On lit les lignes du fichier
+            BufferedReader bReader = new BufferedReader(reader);
 
-        // On regarde les premieres lignes
-        int nbLignes = Integer.parseInt(bReader.readLine());
-        // On lit la ligne suivante
-        int nbColonnes = Integer.parseInt(bReader.readLine());
-        // On initialise le labyrinthe qui sera retourne
-        Labyrinthe l = new Labyrinthe();
+            // On regarde les premieres lignes
+            int nbLignes = Integer.parseInt(bReader.readLine());
+            // On lit la ligne suivante
+            int nbColonnes = Integer.parseInt(bReader.readLine());
+            // On initialise le labyrinthe qui sera retourne
+            Labyrinthe l = new Labyrinthe();
 
-        // On connait le nombre de lignes et colonnes, on peut creer le tableau de murs
-        l.setMurs(nbLignes, nbColonnes);
+            // On connait le nombre de lignes et colonnes, on peut creer le tableau de murs
+            l.setMurs(nbLignes, nbColonnes);
 
-        // On parcourt le labyrinthe
-        // On parcourt l'ensemble des lignes
+            // On parcourt le labyrinthe
+            // On parcourt l'ensemble des lignes
 
-        int i;
-        int j;
+            int i;
+            int j;
 
-        for (i = 0; i < nbLignes; i++){
-            // On change de ligne a chaque iteration
-            // On parcourt les characteres que composent la ligne
-            for (j = 0; j < nbColonnes; j++){
-                char temp = (char)bReader.read();
-                if (temp == MUR){
-                    l.ajoutMurs(i, j);
+            for (i = 0; i < nbLignes; i++) {
+                // On change de ligne a chaque iteration
+                // On parcourt les characteres que composent la ligne
+                for (j = 0; j < nbColonnes; j++) {
+                    char temp = (char) bReader.read();
+                    if (temp == MUR) {
+                        l.ajoutMurs(i, j);
+                    }
+                    if (temp == SORTIE) {
+                        l.setSortie(i, j);
+                    }
+                    if (temp == PJ) {
+                        l.setPersonnage(i, j);
+                    }
+                    if (temp != VIDE && temp != MUR && temp != SORTIE && temp != PJ) {
+                        throw new FichierIncorrectException("caractere inconnu " + temp);
+                    }
+
                 }
-                if (temp == SORTIE){
-                    l.setSortie(i, j);
-                }
-                if (temp == PJ){
-                    l.setPersonnage(i, j);
-                }
-                if (temp != VIDE && temp!= MUR && temp != SORTIE && temp != PJ){
-                    throw new FichierIncorrectException("caractere inconnu " + temp);
-                }
-
+                // On lit la prochaine ligne
+                bReader.readLine();
             }
-            // On lit la prochaine ligne
-            bReader.readLine();
-        }
-        // On ferme le bufferedReader
-        bReader.close();
+            // On ferme le bufferedReader
+            bReader.close();
 
 
+            // TODO : Faire while pour parcourir les fichiers et faire exceptions
+            // Exceptions
+            BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
+            // On passe les lignes inutiles
+            bReader2.readLine();
+            bReader2.readLine();
+            // Les colonnes que l'on va compter
+            int nbC = 0;
+            boolean trouve = false;
+            char temp = (char) bReader2.read();
 
-        // TODO : Faire while pour parcourir les fichiers et faire exceptions
-        // Exceptions
-        BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
-        // On passe les lignes inutiles
-        bReader2.readLine();
-        bReader2.readLine();
-        // Les colonnes que l'on va compter
-        int nbC =0;
-        boolean trouve = false;
-        char temp = (char) bReader2.read();
-
-        while (trouve ==false){
-            nbC += 1;
-            temp = (char) bReader2.read();
-            if (temp == '\n'){
-                trouve = true;
+            while (trouve == false) {
+                nbC += 1;
+                temp = (char) bReader2.read();
+                if (temp == '\n') {
+                    trouve = true;
+                }
             }
+
+            if (i != nbLignes) {
+                throw new FichierIncorrectException("nbLignes ne correspond pas");
+            }
+
+            if (nbC != nbColonnes) {
+                throw new FichierIncorrectException("nbColonnes ne correspond pas");
+            }
+
+
+            // On return le lab
+            return (l);
+        } catch (FichierIncorrectException e){
+            throw new FichierIncorrectException("pb num ligne ou colonne");
         }
 
-        if (i != nbLignes){
-            throw new FichierIncorrectException("nbLignes ne correspond pas");
-        }
-
-        if (nbC != nbColonnes){
-            throw new FichierIncorrectException("nbColonnes ne correspond pas");
-        }
-
-
-
-
-        // On return le lab
-        return(l);
     }
 
 }
