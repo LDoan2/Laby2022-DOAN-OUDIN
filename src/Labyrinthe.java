@@ -206,8 +206,6 @@ public class Labyrinthe {
             // On ferme le bufferedReader
             bReader.close();
 
-
-            // TODO : Faire while pour parcourir les fichiers et faire exceptions
             // Exceptions
             BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
             // On passe les lignes inutiles
@@ -217,7 +215,10 @@ public class Labyrinthe {
             int nbC = 0;
             boolean trouve = false;
             char temp = (char) bReader2.read();
+            int compteurP = 0;
+            int compteurS= 0;
 
+            // On compte le nombre de colonnes
             while (trouve == false) {
                 nbC += 1;
                 temp = (char) bReader2.read();
@@ -225,11 +226,38 @@ public class Labyrinthe {
                     trouve = true;
                 }
             }
+            // On parcours le tableau pour compter les persos et sorties
+            for (int k = 0; k < nbLignes; k++){
+                for (int m = 0; m < nbColonnes; m++){
+                    if (l.getChar(k, m) == SORTIE){
+                        compteurS += 1;
+                    }
+                    if (l.getChar(k, m) == PJ){
+                        compteurP += 1;
+                    }
+                }
+            }
+            // On compte les persos
+            if (compteurP == 0){
+                throw new FichierIncorrectException("personnage inconnu");
+            } else {
+                if (compteurP > 1){
+                    throw new FichierIncorrectException(("plusieurs personnages"));
+                }
+            }
+            // On compte les sorties
+            if (compteurS == 0){
+                throw new FichierIncorrectException("sortie inconnu");
+            } else {
+                if (compteurS > 1){
+                    throw new FichierIncorrectException(("plusieurs sorties"));
+                }
+            }
 
+            // On regarde si c est bien le bon nombre de lignes et colonnes
             if (i != nbLignes) {
                 throw new FichierIncorrectException("nbLignes ne correspond pas");
             }
-
             if (nbC != nbColonnes) {
                 throw new FichierIncorrectException("nbColonnes ne correspond pas");
             }
