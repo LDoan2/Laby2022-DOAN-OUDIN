@@ -57,13 +57,13 @@ public class Labyrinthe {
     static int[] getSuivant(int x, int y, String action) {
         int [] tab =new int[2];
         if (action == HAUT) {
-            y += 1;
+            x -= 1;
         } else if (action == BAS) {
-            y -= 1;
-        } else if (action == DROITE) {
             x += 1;
         } else if (action == GAUCHE) {
-            x -= 1;
+            y -= 1;
+        } else if (action == DROITE) {
+            y += 1;
         }
         tab[0] = x;
         tab[1] = y;
@@ -75,33 +75,33 @@ public class Labyrinthe {
         // On recupere la case suivante
         int[] tab = this.getSuivant(this.personnage.getX(), this.personnage.getY(), action);
         // On réalise l action jusqu a ce que l on croise un mur
-        while (this.getChar(tab[0], tab[1]) != this.MUR ){
-            if (action == this.DROITE){
-                // On avance le perso sur l axe des Y
-                this.personnage.avancerY();
-                // On incremente Y jusqu'a tomber sur le mur
-                tab[1] += 1;
-            }
-
+        while (this.getChar(tab[0],tab[1]) != this.MUR){
             if (action == this.GAUCHE){
-                // On recule le perso sur l axe des Y
+                // On avance le perso sur l axe des Y
                 this.personnage.reculerY();
                 // On incremente Y jusqu'a tomber sur le mur
-                tab[1] = tab[1] - 1;
+                tab[1] -= 1;
+            }
+
+            if (action == this.DROITE){
+                // On recule le perso sur l axe des Y
+                this.personnage.avancerY();
+                // On incremente Y jusqu'a tomber sur le mur
+                tab[1] = tab[1] + 1;
             }
 
             if (action == this.HAUT){
                 // On avance le perso sur l axe des X
-                this.personnage.avancerX();
+                this.personnage.reculerX();
                 // On incremente X jusqu'a tomber sur le mur
-                tab[0] = tab[0] + 1;
+                tab[0] = tab[0] - 1;
             }
 
             if (action == this.BAS){
                 // On recule le perso sur l axe des X
-                this.personnage.reculerX();
+                this.personnage.avancerX();
                 // On décrémente X jusqu'a tomber sur le mur
-                tab[0] = tab[0] - 1;
+                tab[0] += 1;
             }
         }
     }
