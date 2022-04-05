@@ -206,7 +206,7 @@ public class Labyrinthe {
             // On ferme le bufferedReader
             bReader.close();
 
-            // Exceptions
+            /*// Exceptions
             BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
             // On passe les lignes inutiles
             bReader2.readLine();
@@ -263,7 +263,7 @@ public class Labyrinthe {
             }
             if (nbC != nbColonnes) {
                 throw new FichierIncorrectException("nbColonnes ne correspond pas "+nbC+" != "+nbColonnes);
-            }
+            }*/
 
 
             // On return le lab
