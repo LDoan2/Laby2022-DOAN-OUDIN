@@ -159,7 +159,7 @@ public class Labyrinthe {
 
     // TODO : penser a gerer les exceptions
     public static Labyrinthe chargerLabyrinthe(String nom) throws IOException, FichierIncorrectException {
-        try {
+
             // On lit les characteres du fichier
             Reader reader = new FileReader(nom);
             // On lit les lignes du fichier
@@ -220,11 +220,14 @@ public class Labyrinthe {
 
             // On compte le nombre de colonnes
             while (trouve == false) {
-                nbC += 1;
                 temp = (char) bReader2.read();
                 if (temp == '\n') {
                     trouve = true;
                 }
+                else{
+                nbC += 1;
+                }
+
             }
             // On parcours le tableau pour compter les persos et sorties
             for (int k = 0; k < nbLignes; k++){
@@ -259,15 +262,13 @@ public class Labyrinthe {
                 throw new FichierIncorrectException("nbLignes ne correspond pas");
             }
             if (nbC != nbColonnes) {
-                throw new FichierIncorrectException("nbColonnes ne correspond pas");
+                throw new FichierIncorrectException("nbColonnes ne correspond pas "+nbC+" != "+nbColonnes);
             }
 
 
             // On return le lab
             return (l);
-        } catch (FichierIncorrectException e){
-            throw new FichierIncorrectException("pb num ligne ou colonne");
-        }
+
 
     }
 
