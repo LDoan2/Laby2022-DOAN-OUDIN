@@ -203,11 +203,11 @@ public class Labyrinthe {
                         l.setPersonnage(i, j);
                         compteurPJ +=1;
                     }
-                    /**
+
                     if (temp != VIDE && temp != MUR && temp != SORTIE && temp != PJ) {
                         throw new FichierIncorrectException("caractere inconnu " + temp);
                     }
-                     */
+
 
                 }
                 // On lit la prochaine ligne
