@@ -103,10 +103,10 @@ public class Labyrinthe {
                 // On décrémente X jusqu'a tomber sur le mur
                 tab[0] += 1;
             }
+
         }
     }
 
-    // TODO : a eventuellement modifier dans le cas ou il s affiche mal dans le main
     public String toString() {
         // On cree une var de res
         String res ="";

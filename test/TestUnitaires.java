@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.security.spec.ECField;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestUnitaires {
@@ -23,8 +25,27 @@ public class TestUnitaires {
         l.deplacerPerso("gauche");
         assertEquals(l.getChar(1,3),Labyrinthe.VIDE);
         assertEquals(l.getChar(1,1),Labyrinthe.SORTIE);
-
-
-
     }
+
+    @Test
+    public void test_Exception_Pj() throws Exception{
+        // On cree le nouveau labx
+        try {
+            Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby_pas_PJ.txt");
+            // On verifie si c est la bonne exception renvoyee
+        } catch(FichierIncorrectException e){
+        }
+    }
+
+    @Test
+    public void test_Exception_Sortie() throws Exception {
+        try {
+            Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby_pasSortie.txt");
+        }catch(FichierIncorrectException e){
+        }
+    }
+
+
+
+
 }
