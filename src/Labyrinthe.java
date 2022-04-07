@@ -178,8 +178,14 @@ public class Labyrinthe {
             // On parcourt le labyrinthe
             // On parcourt l'ensemble des lignes
 
+            // Indice d iteration des lignes
             int i;
+            // Indice d iteration des colonnes
             int j;
+            // Compteur de joueur
+            int compteurPJ = 0;
+            // COmpteur de sortie
+            int compteurS = 0;
 
             for (i = 0; i < nbLignes; i++) {
                 // On change de ligne a chaque iteration
@@ -191,13 +197,17 @@ public class Labyrinthe {
                     }
                     if (temp == SORTIE) {
                         l.setSortie(i, j);
+                        compteurS += 1;
                     }
                     if (temp == PJ) {
                         l.setPersonnage(i, j);
+                        compteurPJ +=1;
                     }
+                    /**
                     if (temp != VIDE && temp != MUR && temp != SORTIE && temp != PJ) {
                         throw new FichierIncorrectException("caractere inconnu " + temp);
                     }
+                     */
 
                 }
                 // On lit la prochaine ligne
@@ -206,7 +216,26 @@ public class Labyrinthe {
             // On ferme le bufferedReader
             bReader.close();
 
+            if (compteurPJ == 0){
+                throw new FichierIncorrectException("personnage inconnu");
+            }
 
+            if (compteurPJ > 1){
+                throw new FichierIncorrectException(("plusieurs personnages"));
+            }
+
+            if (compteurS == 0){
+                throw new FichierIncorrectException("sortie inconnu");
+            }
+
+            if (compteurS > 1){
+                throw new FichierIncorrectException(("plusieurs sorties"));
+            }
+
+
+
+
+            /**
             // TODO : tout revoir sur les exceptions
             // Exceptions
             BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
@@ -217,8 +246,7 @@ public class Labyrinthe {
             int nbC = 0;
             boolean trouve = false;
             char temp;
-            int compteurP = 0;
-            int compteurS= 0;
+
 
             // On compte le nombre de colonnes
             while (trouve == false) {
@@ -231,35 +259,6 @@ public class Labyrinthe {
                 }
 
             }
-            // On parcours le tableau pour compter les persos et sorties
-            for (int k = 0; k < nbLignes; k++){
-                for (int m = 0; m < nbColonnes; m++){
-                    if (l.getChar(k, m) == SORTIE){
-                        compteurS += 1;
-                    }
-                    if (l.getChar(k, m) == PJ){
-                        compteurP += 1;
-                    }
-                }
-            }
-            // TODO : ne marche pas -> la map va charger mais avec le perso au dernier emplacement qui a ete scanne
-            // On compte les persos
-            if (compteurP == 0){
-                throw new FichierIncorrectException("personnage inconnu");
-            } else {
-                if (compteurP > 1){
-                    throw new FichierIncorrectException(("plusieurs personnages"));
-                }
-            }
-            // On compte les sorties
-            if (compteurS == 0){
-                throw new FichierIncorrectException("sortie inconnu");
-            } else {
-                if (compteurS > 1){
-                    throw new FichierIncorrectException(("plusieurs sorties"));
-                }
-            }
-
 
             // On regarde si c est bien le bon nombre de lignes et colonnes
             if (i != nbLignes) {
@@ -268,7 +267,7 @@ public class Labyrinthe {
             if (nbC  != nbColonnes) {
                 throw new FichierIncorrectException("nbColonnes ne correspond pas "+nbC+" != "+nbColonnes);
             }
-
+            */
 
             // On return le lab
             return (l);
