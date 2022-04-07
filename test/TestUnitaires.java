@@ -29,20 +29,26 @@ public class TestUnitaires {
 
     @Test
     public void test_Exception_Pj() throws Exception{
+        boolean erreur = false;
         // On cree le nouveau labx
         try {
             Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby_pas_PJ.txt");
             // On verifie si c est la bonne exception renvoyee
         } catch(FichierIncorrectException e){
+            erreur = true;
         }
+        assertEquals(true,erreur,"L'erreur ne c'est pas declanchee");
     }
 
     @Test
     public void test_Exception_Sortie() throws Exception {
+        boolean erreur = false;
         try {
             Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby_pasSortie.txt");
         }catch(FichierIncorrectException e){
+            erreur = true;
         }
+        assertEquals(true,erreur,"L'erreur ne c'est pas declanchee");
     }
 
 
