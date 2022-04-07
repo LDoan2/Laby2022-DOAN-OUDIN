@@ -206,7 +206,9 @@ public class Labyrinthe {
             // On ferme le bufferedReader
             bReader.close();
 
-            /*// Exceptions
+
+            // TODO : tout revoir sur les exceptions
+            // Exceptions
             BufferedReader bReader2 = new BufferedReader(new FileReader(nom));
             // On passe les lignes inutiles
             bReader2.readLine();
@@ -214,7 +216,7 @@ public class Labyrinthe {
             // Les colonnes que l'on va compter
             int nbC = 0;
             boolean trouve = false;
-            char temp = (char) bReader2.read();
+            char temp;
             int compteurP = 0;
             int compteurS= 0;
 
@@ -240,6 +242,7 @@ public class Labyrinthe {
                     }
                 }
             }
+            // TODO : ne marche pas -> la map va charger mais avec le perso au dernier emplacement qui a ete scanne
             // On compte les persos
             if (compteurP == 0){
                 throw new FichierIncorrectException("personnage inconnu");
@@ -257,13 +260,14 @@ public class Labyrinthe {
                 }
             }
 
+
             // On regarde si c est bien le bon nombre de lignes et colonnes
             if (i != nbLignes) {
                 throw new FichierIncorrectException("nbLignes ne correspond pas");
             }
-            if (nbC != nbColonnes) {
+            if (nbC  != nbColonnes) {
                 throw new FichierIncorrectException("nbColonnes ne correspond pas "+nbC+" != "+nbColonnes);
-            }*/
+            }
 
 
             // On return le lab
